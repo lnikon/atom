@@ -2,8 +2,6 @@ package ru.atom.instantiation;
 
 public class Sub extends Base {
 
-    private int willBeInited = 42;
-
     // static init block
     static {
         System.out.println("Sub: static init block");
@@ -12,6 +10,7 @@ public class Sub extends Base {
     // init block
     {
         System.out.println("Sub: init block");
+        int willBeInited = 42;
         System.out.println("Sub: inited field `willBeInited` = " + willBeInited);
         // Не можем получить значение willBeInitedLater в этом месте
     }

@@ -6,10 +6,9 @@ import java.io.File;
  * Created by sergey on 2/28/17.
  */
 public class Message implements Storable {
-    private String content;
 
     public Message(String content) {
-        this.content = content;
+        String content1 = content;
     }
 
     @Override
