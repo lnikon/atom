@@ -7,20 +7,43 @@ import java.util.ListIterator;
 
 
 public class CustomLinkedList<E> implements List<E> {
+    /*
+    Number of nodes in list
+     */
+    private int size;
 
+    /*
+    List head
+     */
+    ListNode<E> head;
+
+    /*
+    List tail
+     */
+    ListNode<E> tail;
+
+    CustomLinkedList() {
+        this.size = 0;
+        this.head = null;
+        this.tail = null;
+    }
+
+    /*
+    @return number of nodes
+     */
     @Override
     public int size() {
-        throw new UnsupportedOperationException();
+        return this.size;
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException();
+        return size == 0;
     }
 
     @Override
     public boolean contains(Object o) {
-        throw new UnsupportedOperationException();
+        return false;
     }
 
     @Override
@@ -30,7 +53,16 @@ public class CustomLinkedList<E> implements List<E> {
 
     @Override
     public boolean add(E e) {
-        throw new UnsupportedOperationException();
+        final ListNode<E> tailCopy = this.tail;
+        ListNode<E> newNode = new ListNode<E>(tailCopy, e, null);
+        this.tail = newNode;
+        if(tailCopy == null) {
+            this.head = tail;
+        } else {
+            tailCopy.next = this.tail;
+        }
+        size++;
+        return true;
     }
 
     @Override
