@@ -1,9 +1,6 @@
 package ru.atom.list;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 
 public class CustomLinkedList<E> implements List<E> {
@@ -43,12 +40,20 @@ public class CustomLinkedList<E> implements List<E> {
 
     @Override
     public boolean contains(Object o) {
+        E obj = (E )o;
+        Iterator<E> itr = this.iterator();
+        while(itr.hasNext()) {
+            if(itr.next() == obj) {
+                return true;
+            }
+        }
+
         return false;
     }
 
     @Override
     public Iterator<E> iterator() {
-        throw new UnsupportedOperationException();
+        return new CustomLinkedListItr<E>();
     }
 
     @Override
@@ -90,6 +95,38 @@ public class CustomLinkedList<E> implements List<E> {
         throw new UnsupportedOperationException();
     }
 
+    /*
+    Implementation of this iterator is similar to the ArrayList Itr nested class
+    */
+    public class CustomLinkedListItr<E> implements Iterator<E> {
+        int cursor;
+
+        CustomLinkedListItr() { }
+
+        @Override
+        public E next() {
+            if(this.cursor >= CustomLinkedList.this.size) {
+                throw new NoSuchElementException();
+            } else {
+                ListNode copyNode = CustomLinkedList.this.head;
+
+                int j = 0;
+                while(j != this.cursor) {
+                    copyNode = copyNode.next;
+                    ++j;
+                }
+
+                this.cursor++;
+
+                return (E) copyNode.data;
+            }
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.cursor != CustomLinkedList.this.size;
+        }
+    }
 
     /*
       !!! Implement methods below Only if you know what you are doing !!!

@@ -30,5 +30,4 @@ public class ArrayListTest {
         assertEquals((Integer) 3, list.get(2));
         assertFalse(list.contains(42));
     }
-
 }

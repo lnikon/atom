@@ -6,9 +6,9 @@ import java.util.List;
  * Contains ref to next node, prev node and value
  */
 public class ListNode<E> {
-    E data;
-    ListNode<E> prev;
-    ListNode<E> next;
+    public E data;
+    public ListNode<E> prev;
+    public ListNode<E> next;
 
     ListNode() {
         prev = null;
