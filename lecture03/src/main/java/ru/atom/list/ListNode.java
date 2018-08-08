@@ -25,4 +25,14 @@ public class ListNode<E> {
         this.prev = prev;
         this.next = next;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(o == null || o.getClass() != this.getClass()) return false;
+
+        ListNode node = (ListNode )o;
+
+        return node.data.equals(this.data);
+    }
 }

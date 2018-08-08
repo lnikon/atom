@@ -65,8 +65,8 @@ public class CustomLinkedListTest {
         assertEquals(2 + 5, intList.size());
     }
 
-//    @Test
-    @Ignore
+    @Test
+//    @Ignore
     public void removeTest() throws Exception {
         intList.remove((Integer) 42);
         assertFalse(intList.contains(42));

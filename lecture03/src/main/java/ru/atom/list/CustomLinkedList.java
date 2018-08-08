@@ -72,7 +72,21 @@ public class CustomLinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(Object o) {
-        throw new UnsupportedOperationException();
+        ListNode copyHead = this.head;
+        E obj = (E )o;
+
+        while(copyHead.next != null) {
+            System.out.println(copyHead.data);
+            if(obj.equals(copyHead.data)) {
+                copyHead.next.prev = copyHead.prev;
+                copyHead.prev.next = copyHead.next;
+                return true;
+            }
+
+            copyHead = copyHead.next;
+        }
+
+        return false;
     }
 
     @Override
